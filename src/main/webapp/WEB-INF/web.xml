@@ -9,4 +9,40 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- Controller 설정  -->
+  <!-- <servlet>
+ 		<servlet-name>test2</servlet-name> 
+ 		<servlet-class>j1111.Test2</servlet-class>
+  </servlet>
+ 		  
+ 	<servlet-mapping>
+ 		<servlet-name>test2</servlet-name>
+ 		<url-pattern>/t2</url-pattern>
+ 	</servlet-mapping> -->
+ 	
+ 	<servlet> <!-- 서블릿을 연결할거다. -->
+ 		<servlet-name>test2</servlet-name> <!-- test2라는 별명을 만든다. -->
+ 		<servlet-class>j1111.Test2</servlet-class> <!-- test2는 j1111패키지에 있는 Test2 파일이다. -->
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>test2</servlet-name> <!-- 별명 test2를 맵핑할것이다. -->
+ 		<url-pattern>/T2</url-pattern> <!-- /t2로 url 맵핑한다. -->
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 		<servlet-name>study12</servlet-name>
+ 		<servlet-class>j1111.Test12</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>study12</servlet-name>
+		<url-pattern>/test12ok</url-pattern> 		
+ 	</servlet-mapping>
+ 	
+ 	
+ 	
+  
+  
 </web-app>
