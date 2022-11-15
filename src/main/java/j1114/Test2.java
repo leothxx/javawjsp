@@ -31,14 +31,15 @@ public class Test2 extends HttpServlet {
 //		String pwd = request.getParameter("pwd").trim();
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd").trim();
 		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
+		String hostIp = request.getParameter("hostIp");
 		
 		mid = mid.trim();
 		PrintWriter out = response.getWriter();
-		
+		System.out.println(hostIp);
 		if(mid.equals("admin") && pwd.equals("1234")) {
 			out.println("<script>");
 			out.println("alert('관리자 인증 성공!!');");
-			out.println("location.href='"+request.getContextPath()+"/study/1114/test2Res.jsp?mid="+mid+"&name="+name+"';"); //주소로 찍어 넘기면 get방식임.
+			out.println("location.href='"+request.getContextPath()+"/study/1114/test2Res.jsp?mid="+mid+"&name="+name+"&hostIp="+hostIp+"';"); //주소로 찍어 넘기면 get방식임.
 			out.println("</script>");
 		}
 		else {

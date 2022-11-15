@@ -25,6 +25,7 @@
     	<p>
     		<input type="submit" value="전송" class="btn btn-primary"/>
     	</p>
+    	<input type="hidden" name="hostIp" value="<%=request.getRemoteAddr() %>"/> <!-- 접속한 사람의 아이피를 읽어온다. -->
     </form> 
   </div>
   <p><br/></p>

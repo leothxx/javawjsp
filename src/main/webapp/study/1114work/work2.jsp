@@ -12,13 +12,10 @@
   	let cnt = 0;
   	let data="";
   	$(function(){
-	  	
 	  	$('.productPlus').click(function(){
 	  		cnt++;
 	  		$('#divOutput').append('<div id="productInfo'+cnt+'"><div class="productInfo"><p>상품명</p> <input type="text" name="productName" id="product'+cnt+'Name"/> <p>가격</p> <input type="number" name="productPlace" id="product'+cnt+'Place"/> <p>수량</p> <input type="number" name="productSu" id="product'+cnt+'Su"/> <input type="button" name="delete'+cnt+'" id="delete'+cnt+'" value="삭제" onclick="textdelete('+cnt+')" class="btn btn-danger delete"/></div></div>');
 	  	});
-	  	
-	  	
   	});
   	//삭제버튼
   	function textdelete(cnt) {

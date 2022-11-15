@@ -4,6 +4,7 @@
 
 	String mid = request.getParameter("mid");
 	String name = request.getParameter("name");
+	String hostIp = request.getParameter("hostIp");
 %>
 <!DOCTYPE html>
 <html>
@@ -30,8 +31,20 @@
     	요청 파라메타 길이 : <%=request.getContentLength() %><br/>
     	현재 ContextPath : <%=request.getContextPath() %><br/>
     	현재 사용중인 프로토콜 : <%=request.getProtocol() %><br/>
+    	현재 접속중인 IP : <%=hostIp %><br/>
     	
     <hr/>
+    <p><img src="../../images/gif/3.gif" width="400px"/></p>
+    <p><img src="../../images/gif/3.gif" width="400px"/></p>
+    <p><img src="../../images/gif/2.gif" width="400px"/></p>
+    <p><img src="../../images/gif/5.gif" width="400px"/></p>
+    <p><img src="../../images/gif/1.gif" width="400px"/></p>
+    <p><img src="../../images/gif/4.gif" width="400px"/></p>
+    <p><img src="../../images/gif/7.gif" width="400px"/></p>
+    <p><img src="../../images/gif/6.gif" width="400px"/></p>
+    <p><img src="../../images/gif/9.gif" width="400px"/></p>
+    <p><img src="../../images/gif/8.gif" width="400px"/></p>
+    <p><img src="../../images/gif/10.gif" width="400px"/></p>
     <p>
     	<!-- <a href="logout.jsp">로그아웃</a> -->
     	<a href="<%=request.getContextPath() %>/j1114_Logout?name=<%=name %>">로그아웃</a>
