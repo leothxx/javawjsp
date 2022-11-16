@@ -8,11 +8,13 @@ public class WorkVO {
 	private String productTot;
 	private String buyerName;
 	private String category;
+	private String sw;
+	
 	
 	
 	
 	public WorkVO(String productName, String productPrice, String productSu, String priceTot, String productTot,
-			String buyerName, String category) {
+			String buyerName, String category, String sw) {
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productSu = productSu;
@@ -20,6 +22,7 @@ public class WorkVO {
 		this.productTot = productTot;
 		this.buyerName = buyerName;
 		this.category = category;
+		this.sw = sw;
 	}
 	public String getProductName() {
 		return productName;
@@ -64,12 +67,20 @@ public class WorkVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public String getSw() {
+		return sw;
+	}
+	public void setSw(String sw) {
+		this.sw = sw;
+	}
 	
 	@Override
 	public String toString() {
 		return "WorkVO [productName=" + productName + ", productPrice=" + productPrice + ", productSu=" + productSu
 				+ ", priceTot=" + priceTot + ", productTot=" + productTot + ", buyerName=" + buyerName + ", category="
-				+ category + "]";
+				+ category + ", sw=" + sw + "]";
 	}
+	
+	
 
 }

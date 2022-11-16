@@ -8,7 +8,7 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  </welcome-file-list> 
   
   <!-- Controller 설정  -->
   <!-- <servlet>
@@ -41,8 +41,63 @@
 		<url-pattern>/test12ok</url-pattern> 		
  	</servlet-mapping>
  	
+ 	<!-- 특정 서블릿에 초기값을 할당하기 -->
  	
- 	
-  
+ 	<!-- <servlet>
+ 		<servlet-name>green</servlet-name> green 별명으로 지정
+ 		<servlet-class>j1117.Green</servlet-class> j1117패키지에 있는 Green
+ 		<init-param>
+ 			<param-name>mid</param-name> 변수명 mid
+ 			<param-value>admin</param-value> 값 admin
+ 		</init-param>
+ 		<init-param>
+ 			<param-name>pwd</param-name> 변수명 mid
+ 			<param-value>1234</param-value> 값 admin
+ 		</init-param>
+ 		<init-param>
+ 			<param-name>className</param-name> 변수명 mid
+ 			<param-value>기술개발2팀</param-value> 값 admin
+ 		</init-param>
+ 	</servlet>
+ 	<servlet-mapping> 맵핑!
+ 		<servlet-name>green</servlet-name>
+ 		<url-pattern>/Green</url-pattern>
+ 	</servlet-mapping> -->
+ 	 
+ 	 
+ 	<!-- 공통 변수에 초기값 할당하기. -->
+ 	<context-param> 
+ 		<param-name>logoName</param-name>
+ 		<param-value>Coogle</param-value>
+ 	</context-param>
+ 	<context-param>
+ 		<param-name>homeAddress</param-name>
+ 		<param-value>http://coocle.com/</param-value>
+ 	</context-param>
+   
+   <!-- 에러 페이지 설정! -->
+   
+   <!-- <error-page>
+   		<error-code>400</error-code> 에러코드 500번 발생시
+   		<location>/study/1117/error/error400.jsp</location> 해당 위치로 보낸당.
+   </error-page>
+   <error-page>
+   		<error-code>404</error-code> 에러코드 500번 발생시
+   		<location>/study/1117/error/error400.jsp</location> 해당 위치로 보낸당.
+   </error-page>
+   <error-page>
+   		<error-code>500</error-code> 에러코드 500번 발생시
+   		<location>/study/1117/error/error500.jsp</location> 해당 위치로 보낸당.
+   </error-page> -->
+   
+   <!-- Filter 매핑처리 -->
+   <!-- <filter>
+   	<filter-name>encodingFilter</filter-name> 별명은 클래스명을 가져와서 앞글자를 보통 소문자로 지음.
+   	<filter-class>filter.EncodingFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   	<filter-name>encodingFilter</filter-name>
+   	<url-pattern>/*</url-pattern> 모든 경로에 있는 파일을 인코딩필터를 통과시키겠다고 지정. 모든 경로에 있는 파일은 인코딩필터 java파일을 거쳐야함.
+   </filter-mapping> -->
   
 </web-app>

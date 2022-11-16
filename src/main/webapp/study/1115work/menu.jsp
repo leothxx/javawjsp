@@ -9,9 +9,9 @@
 <body>
   <div class="container text-center">
   	<nav class="n">
-	    <div class="a"><a href="main.jsp">홈으로</a></div>
-	    <div class="a"><a href="main.jsp?sw=input">판매상품등록</a></div>
-	    <div class="a"><a href="main.jsp?sw=list">상품조회</a></div>
+	    <div class="a"><a href="<%=request.getContentType() %>/study/1115work/main.jsp?sw=main&productName=${vo.productName}&productPrice=${vo.productPrice}&productSu=${productSu}&priceTot=${priceTot}&productTot=${productTot}&buyerName=${buyerName}$category=${vo.category}">홈으로</a></div>
+	    <div class="a"><a href="<%=request.getContentType() %>/study/1115work/main.jsp?sw=input&productName=${vo.productName}&productPrice=${vo.productPrice}&productSu=${productSu}&priceTot=${priceTot}&productTot=${productTot}&buyerName=${buyerName}$category=${vo.category}">판매상품등록</a></div>
+	    <div class="a"><a href="<%=request.getContentType() %>/study/1115work/main.jsp?sw=list&productName=${vo.productName}&productPrice=${vo.productPrice}&productSu=${productSu}&priceTot=${priceTot}&productTot=${productTot}&buyerName=${buyerName}$category=${vo.category}">상품조회</a></div>
   	</nav>
   </div>
 </body>

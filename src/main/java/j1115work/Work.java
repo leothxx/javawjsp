@@ -22,8 +22,8 @@ public class Work extends HttpServlet {
 		String productPrices[] = request.getParameterValues("productPrice");
 		String productSus[] = request.getParameterValues("productSu");
 		String buyername = request.getParameter("name");
-		String category = request.getParameter("category");
-		
+		String category = request.getParameter("category")==null?"":request.getParameter("category");
+		String sw = request.getParameter("sw");
 	
 		WorkVO vo;
 		int productTot=0;
@@ -46,13 +46,16 @@ public class Work extends HttpServlet {
 			}
 		}
 		
-		vo = new WorkVO(name,priceVO,suVO,totVO,productTotVO,buyername,category);
+		vo = new WorkVO(name,priceVO,suVO,totVO,productTotVO,buyername,category,sw);
 		out.println("<script>");
 		out.println("alert('상품이 정상적으로 등록되었습니다!')");
 		out.println("</script>");
 		
 		request.setAttribute("vo", vo);
-		String viewPage = "/study/1115work/main.jsp";
+		String viewPage = "/study/1115work";
+		if(sw.equals("main")) viewPage += "/main.jsp";
+		else if(sw.equals("input")) viewPage += "/input.jsp";
+		else if(sw.equals("list")) viewPage += "/list.jsp";
 		request.getRequestDispatcher(viewPage).forward(request, response);
 		
 		
