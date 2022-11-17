@@ -1,4 +1,4 @@
-<%@page import="j1116.Test2VO"%>
+<%@page import="study.j1116.Test2VO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	Test2VO vo = (Test2VO) request.getAttribute("vo"); //앞에서 담았던 변수 명을 그대로 입력하여 자료값을 가져온다.

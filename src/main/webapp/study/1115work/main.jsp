@@ -69,7 +69,7 @@
 	    <%} else {%>
 	    <h2>상품 판매 관리 메인 화면 입니다.</h2>
 	    <hr/>
-	    <p><img src="../../images/gif/19.gif" width="400px"/></p>
+	    <p><img src="${pageContext.request.contextPath}/images/gif/19.gif" width="400px"/></p>
 	    <%} %>
 	    <br/>
     </div>
