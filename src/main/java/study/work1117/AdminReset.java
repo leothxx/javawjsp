@@ -21,7 +21,6 @@ public class AdminReset extends HttpServlet {
 		out.println("<script>");
 		out.println("alert('관리자님! 방문자수 초기화가 완료되었습니다!')");
 		out.println("location.href='"+request.getContextPath()+"/study/1117work/member.jsp'");
-		out.println("</script>");
-		
+		out.println("</script>");	
 	}
 }
