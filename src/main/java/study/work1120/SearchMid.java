@@ -1,4 +1,4 @@
-package study.database;
+package study.work1120;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/database/SearchMid")
+@WebServlet("/work1120/SearchMid")
 public class SearchMid extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,13 +23,13 @@ public class SearchMid extends HttpServlet {
 		
 		if(vo.getName()!=null) {
 			request.setAttribute("vo", vo);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/study/1120_Database/memberSearch.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/study/1120_Work/memberSearch.jsp");
 			dispatcher.forward(request, response);			
 		}
 		else {
 			out.println("<script>");
 			out.println("alert('해당 아이디를 찾을 수 없습니다.')");
-			out.println("location.href='"+request.getContextPath()+"/study/1120_Database/member.jsp'");
+			out.println("location.href='"+request.getContextPath()+"/study/1120_Work/member.jsp'");
 			out.println("</script>");
 		}
 	}
