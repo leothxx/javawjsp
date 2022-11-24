@@ -94,30 +94,15 @@
     	<br/>
   		<!-- 첫페이지 이전블록 / 1(4) 2(5) 3(6) / 다음블록 마지막페이지 -->
 	  	<div class="text-center">
-  			<ul class="pagination justify-content-center">
-		  		<c:if test="${pag >= 1}">
-		  			<li class="page-item"><a href="${ctp}/guList.gu?pag=1" class="page-link text-secondary">첫페이지</a></li>
-		  		</c:if>
-		  		<c:if test="${curBlock >= 0}">
-		  			<c:if test="${curBlock == 0}"><li class="page-item"><a href="${ctp}/guList.gu?pag=1" class="page-link text-secondary">이전블록</a></li></c:if>
-		  			<c:if test="${curBlock != 0}"><li class="page-item"><a href="${ctp}/guList.gu?pag=${(curBlock-1)*blockSize+1}" class="page-link text-secondary">이전블록</a></li></c:if>
-		  		</c:if>
-		  		<c:forEach var="i" begin="${(curBlock)*blockSize+1}" end="${(curBlock)*blockSize+blockSize}" varStatus="st">
-			  		<c:if test="${i <= totPage && i == pag}">
-		  				<li class="page-item active"><a href="${ctp}/guList.gu?pag=${i}" class="page-link bg-secondary border-secondary">${i}</a></li>
-		  			</c:if>
-			  		<c:if test="${i <= totPage && i != pag}"> <!-- 마지막 블록에는 마지막 페이지까지만 와야함. -->
-		  				<li class="page-item"><a href="${ctp}/guList.gu?pag=${i}" class="page-link text-secondary">${i}</a></li>
-		  			</c:if>
-		  		</c:forEach>
-		  		<c:if test="${curBlock <= lastBlock}">
-		  			<c:if test="${curBlock == lastBlock}"><li class="page-item"><a href="${ctp}/guList.gu?pag=${totPage}" class="page-link text-secondary">다음블록</a></li></c:if>
-		  			<c:if test="${curBlock != lastBlock}"><li class="page-item"><a href="${ctp}/guList.gu?pag=${(curBlock+1)*blockSize+1}" class="page-link text-secondary">다음블록</a></li></c:if>
-		  		</c:if>
-		  		<c:if test="${pag <= totPage}">
-		  			<li class="page-item"><a href="${ctp}/guList.gu?pag=${totPage}" class="page-link text-secondary">마지막페이지</a></li>
-		  		</c:if>
-	  		</ul>
+	  		<c:if test="${pag > 1}"><a href="${ctp}/guList.gu?pag=1" class="btn btn-primary">첫페이지</a></c:if>
+	  		<c:if test="${curBlock > 0}"><a href="${ctp}/guList.gu?pag=${(curBlock-1)*blockSize+1}" class="btn btn-warning">이전블록</a></c:if>
+	  		<c:forEach var="i" begin="${(curBlock)*blockSize+1}" end="${(curBlock)*blockSize+blockSize}" varStatus="st">
+		  		<c:if test="${i <= totPage}"> <!-- 마지막 블록에는 마지막 페이지까지만 와야함. -->
+	  				<a href="${ctp}/guList.gu?pag=${i}" class="btn btn-secondary">${i}</a>
+	  			</c:if>
+	  		</c:forEach>
+	  		<c:if test="${curBlock < lastBlock}"><a href="${ctp}/guList.gu?pag=${(curBlock+1)*blockSize+1}" class="btn btn-warning">다음블록</a></c:if>
+	  		<c:if test="${pag < totPage}"><a href="${ctp}/guList.gu?pag=${totPage}" class="btn btn-primary">마지막페이지</a></c:if>
 	  	</div>
   	</div>
   <p><br/></p>

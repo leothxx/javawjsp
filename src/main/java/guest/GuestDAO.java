@@ -48,11 +48,13 @@ public class GuestDAO {
 	}
 
 	// 빙명록 전체 리스트
-	public ArrayList<GuestVO> getGuestList() {
+	public ArrayList<GuestVO> getGuestList(int startIndexNo, int pageSize) {
 		ArrayList<GuestVO> vos = new ArrayList<>();
 		try {
-			sql = "select * from guest order by idx desc";
+			sql = "select * from guest order by idx desc limit ?,?"; //시작 인덱스번호, 가져올 건수 (하나만 적으면 그 인덱스부터 다 가져온다)
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startIndexNo);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new GuestVO();
@@ -110,6 +112,24 @@ public class GuestDAO {
 			pstmtClose();
 		}
 		return res;
+	}
+
+	// 방명록의 총 레코드 건수 구하기
+	public int totRecCnt() {
+		int totRecCnt = 0;
+		try {
+			sql = "select count(*) as cnt from guest;";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			// totRecCnt = rs.getInt(1); //필드의 숫자를 적어서 가져오면 된다.
+			totRecCnt = rs.getInt("cnt"); // 혹은 별명을 as로 지정하여 별명으로 가져온다.
+		} catch (SQLException e) {
+			System.out.println("SQL 에러 발생!"+e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return totRecCnt;
 	}
 	
 	

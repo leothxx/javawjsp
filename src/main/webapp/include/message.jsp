@@ -18,6 +18,7 @@
   	else if(msg == "adminLogoutOk") msg = "관리자님 로그아웃 되셨습니다!"
   	else if(msg == "guDeleteOk") msg = "관리자님 방명록이 삭제되었습니다!"
   	else if(msg == "guDeleteNo") msg = "관리자님 방명록이 삭제되지 않았습니다ㅠ.ㅠ"
+  	else if(msg == "melong") msg = "해찬이형 접근 금지!"
 		alert(msg);
 		if(url != "") location.href = url;
   </script>
