@@ -23,5 +23,4 @@ public class PassOk2Command implements StudyInterface {
 		request.setAttribute("pwd", pwd);
 		request.setAttribute("shaPwd", shaPwd);
 	}
-
 }
