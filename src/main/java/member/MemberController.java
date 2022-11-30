@@ -1,6 +1,7 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 @WebServlet("*.mem")
@@ -21,6 +23,8 @@ public class MemberController extends HttpServlet {
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
 		
 		if(com.equals("/memLogin")) {
+			command = new MemLoginCommand();
+			command.execute(request, response);
 			viewPage += "/memLogin.jsp";
 		}
 		else if(com.equals("/memLoginOk")) {
@@ -51,9 +55,6 @@ public class MemberController extends HttpServlet {
 		else if(com.equals("/memJoin")) {
 			viewPage += "/memJoin.jsp";
 		}
-		else if(com.equals("/memUpdatePwd")) {
-			viewPage += "/memUpdatePwd.jsp";
-		}
 		else if(com.equals("/memJoinOk")) {
 			command = new MemJoinOkCommand();
 			command.execute(request, response);
@@ -68,6 +69,9 @@ public class MemberController extends HttpServlet {
 			command = new MemInforCommand();
 			command.execute(request, response);
 			viewPage += "/memInfor.jsp";
+		}
+		else if(com.equals("/memUpdatePwd")) {
+			viewPage += "/memUpdatePwd.jsp";
 		}
 		else if(com.equals("/memUpdatePwdOk")) {
 			command = new MemUpdatePwdOkCommand();
@@ -92,7 +96,16 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		
+		else if(com.equals("/memMemberSearch")) {
+			command = new MemMemberSearchCommand();
+			command.execute(request, response);
+			viewPage += "/memList.jsp";
+		}
+		else if(com.equals("/memDelete")) {
+			command = new MemDeleteCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

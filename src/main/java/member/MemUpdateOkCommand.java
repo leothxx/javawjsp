@@ -12,7 +12,6 @@ public class MemUpdateOkCommand implements MemberInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
 		String mid = (String) session.getAttribute("sMid");
 		String sNickName = (String) session.getAttribute("sNickName");
 		
@@ -53,7 +52,6 @@ public class MemUpdateOkCommand implements MemberInterface {
 		// 아이디와 닉네임을 다시한번 중복체크 해준다.
 		MemberDAO dao = new MemberDAO();
 		
-		//받은 닉네임과 원래 닉네임이 일치하지 않았을때 백에서 중복체크를 한다.
 		if(!nickName.equals(sNickName)) {
 			String tempNickName = dao.memNickCheck(nickName);
 			if(!tempNickName.equals("")) {
@@ -71,7 +69,7 @@ public class MemUpdateOkCommand implements MemberInterface {
 		vo.setGender(gender);
 		vo.setBirthday(birthday);
 		vo.setTel(tel);
-		vo.setAddress(address.substring(0, address.length()-1));
+		vo.setAddress(address);
 		vo.setEmail(email);
 		vo.setHomePage(homePage);
 		vo.setJob(job);
@@ -82,15 +80,16 @@ public class MemUpdateOkCommand implements MemberInterface {
 		
 		int res = dao.setMemberUpdateOk(vo);
 		
-		if(res == 1) {			
-			//정보가 변경되었으면 새로운 닉네임을 세션에 담는다.
+		if(res == 1) {
+			// 정보가 변경되었으면 새로운 닉네임을 세션에 저장처리한다.
 			session.setAttribute("sNickName", nickName);
 			request.setAttribute("msg", "memUpdateOk");
 			request.setAttribute("url", request.getContextPath()+"/memMain.mem");
 		}
 		else {
-			request.setAttribute("msg", "memJoinNo");
+			request.setAttribute("msg", "memUpdateNo");
 			request.setAttribute("url", request.getContextPath()+"/memUpdate.mem");
 		}
 	}
+
 }

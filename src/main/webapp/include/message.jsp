@@ -32,6 +32,10 @@
   	else if(msg == "passwordYes") msg = "회원정보변경 페이지로 이동합니다.";
   	else if(msg == "memUpdateOk") msg = "회원정보가 변경되었습니다.";
   	else if(msg == "memUpdateNo") msg = "회원정보 변경실패!";
+  	else if(msg == "levelCheckOk") msg = "관리자님 회원 등급이 변경되었습니당 ^_^";
+  	else if(msg == "memberDelOk") msg = "정상적으로 탈퇴 됐다잉~? 곧 너 줘패러간다";
+  	else if(msg == "memberDelOkay") msg = "관리자님 정상적으로 회원 탈퇴가 완료되었습니다!!!";
+  	else if(msg == "memberDelNo") msg = "관리자님 회원 탈퇴가 실패하였습니다 ㅠㅠ";
   	
 		alert(msg);
 		if(url != "") location.href = url;

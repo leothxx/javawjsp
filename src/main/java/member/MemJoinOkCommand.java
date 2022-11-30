@@ -80,7 +80,7 @@ public class MemJoinOkCommand implements MemberInterface {
 		vo.setGender(gender);
 		vo.setBirthday(birthday);
 		vo.setTel(tel);
-		vo.setAddress(address.substring(0, address.length()-1));
+		vo.setAddress(address);
 		vo.setEmail(email);
 		vo.setHomePage(homePage);
 		vo.setJob(job);

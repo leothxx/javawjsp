@@ -21,7 +21,7 @@
     	// 폼의 유효성 검사~~~~
     	let regMid = /^[a-z0-9_]{4,20}$/;
       // let regPwd = /(?=.*[a-zA-Z])(?=.*?[#?!@$%^&*-]).{4,24}/;
-      let regPwd = /(?=.*[0-9a-zA-Z]).{4,20}/;
+      let regPwd = /(?=.*[0-9a-zA-Z]).{4,20}$/;
       let regNickName = /^[가-힣]+$/;
       let regName = /^[가-힣a-zA-Z]+$/;
       let regEmail =/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
@@ -58,7 +58,7 @@
         return false;
       }
       else if(!regPwd.test(pwd)) {
-        alert("비밀번호는 1개이상의 문자와 특수문자 조합의 6~20 자리로 작성해주세요.");
+        alert("비밀번호는 1개이상의 문자와 특수문자 조합의 6~24 자리로 작성해주세요.");
         myform.pwd.focus();
         return false;
       }
