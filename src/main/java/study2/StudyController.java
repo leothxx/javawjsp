@@ -1,7 +1,6 @@
 package study2;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@SuppressWarnings("serial")
 @WebServlet("*.st")
 public class StudyController extends HttpServlet {
 	@Override
@@ -21,19 +21,16 @@ public class StudyController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
 		
-		//세션이 끊겼다면 작업의 진행을 중지시키고 홈으로 전송.
+		// 세션이 끈겼다면 작업의 진행을 중시시키고 홈으로 전송시켜준다.
 		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();
 		int level = session.getAttribute("sLevel")==null ? 99 : (int) session.getAttribute("sLevel");
-		if(level > 4) {
-			out.println("<script>");
-			out.println("alert('세션이 존재하지 않습니다.\n로그인 해주세요.');");
-			out.println("</script>");
+		
+		if(level >= 4) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/");
 			dispatcher.forward(request, response);
 		}
 		
-		if(com.equals("/pass")) {
+		else if(com.equals("/pass")) {
 			viewPage += "/password/pass.jsp";
 		}
 		else if(com.equals("/passOk1")) {
@@ -57,15 +54,24 @@ public class StudyController extends HttpServlet {
 		else if(com.equals("/userSearch")) {
 			command = new UserSearchCommand();
 			command.execute(request, response);
-			//viewPage += "/ajax/userList.jsp"; 여기로 다시 보내면 동기식이 되어버린다. 그러기에 주석하고 return을 준다.
 			return;
 		}
 		else if(com.equals("/userDel")) {
 			command = new UserDelCommand();
 			command.execute(request, response);
-			//viewPage += "/ajax/userList.jsp"; 여기로 다시 보내면 동기식이 되어버린다. 그러기에 주석하고 return을 준다.
 			return;
 		}
+		else if(com.equals("/userInput")) {
+			command = new UserInputCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/userUpdate")) {
+			command = new UserUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

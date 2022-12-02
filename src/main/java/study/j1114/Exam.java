@@ -17,6 +17,8 @@ public class Exam extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
+		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
+		String part = request.getParameter("part")==null ? "" : request.getParameter("part");
 		String[] products = request.getParameterValues("product");
 		String[] prices = request.getParameterValues("price");
 		String[] sus = request.getParameterValues("su");
@@ -47,8 +49,10 @@ public class Exam extends HttpServlet {
 		out.println("th, td{text-align:center}");
 		out.println("</style>");
 		out.println("<p><br/></p>");
-		out.println("<h2 class='text-center'>제품 가격 계산하기</h2>");
+		out.println("<h2 class='text-center'>제품 가격 계산하기</h2><br/>");
 		out.println("<div class='container'>");
+		out.println("<p>상품 등록자 : " + name + "</p>");
+		out.println("<p>상품 분류 : " + part + "</p>");
 		out.println("<table class='table table-bordered'><tr class='table-dark text-dark'>");
 		out.println("<th>품명</th><th>가격</th><th>수량</th><th>금액</th>");
 		for(int i=0; i<products.length; i++) {
@@ -64,9 +68,9 @@ public class Exam extends HttpServlet {
 			out.println("<td>" + decFormat.format(res[i]) + "</td>");
 			out.println("</tr>");
 		}
-		out.println("<tr style='background-Color:#c0c0c0'><td>총가격</td><td colspan='3'>" + decFormat.format(totPrice) + "</td></tr>");
+		out.println("<tr style='background-Color:orange'><td>총가격</td><td colspan='3'>" + decFormat.format(totPrice) + "</td></tr>");
 		out.println("</table>");
 		out.println("<hr/>");
-		out.println("<a href='"+request.getContextPath()+"/study/1114/exam_동적폼.jsp' class='btn btn-warning form-control'>돌아가기</a>");
+		out.println("<a href='"+request.getContextPath()+"/study/1114/exam_동적폼.jsp' class='btn btn-primary form-control'>돌아가기</a>");
 	}
 }

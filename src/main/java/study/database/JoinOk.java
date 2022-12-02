@@ -16,7 +16,7 @@ public class JoinOk extends HttpServlet {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
-		PrintWriter out = response.getWriter();
+		
 		JusorokVO vo = new JusorokVO();
 		
 		vo.setMid(mid);
@@ -25,22 +25,25 @@ public class JoinOk extends HttpServlet {
 		
 		JusorokDAO dao = new JusorokDAO();
 		
-		//아이디 중복체크.......
+		// 아이디 중복체크........
 		
-		// 중복체크 후 정상자료일 경우 DB에 저장처리
-		int res = dao.setJoinOK(vo);
+		// 중복체크후 정상자료일경우 DB에 저장처리
+		int res = dao.setJoinOk(vo);
+
+		PrintWriter out = response.getWriter();
 		
 		if(res == 1) {
 			out.println("<script>"
-							+ "alert('"+mid+"님 회원가입을 환영합니다람쥐');"
-							+ "location.href='"+request.getContextPath()+"/study/1120_Database/login.jsp';"
-							+ "</script>");
+								+ "alert('"+mid+"님 회원가입을 환영합니다.');"
+								+ "location.href='"+request.getContextPath()+"/study/1120_Database/login.jsp';"
+								+ "</script>");
 		}
 		else {
 			out.println("<script>");
-			out.println("alert('회원가입 실패! 다시 회원가입 해주세용')");
+			out.println("alert('회원가입 실패~ 다시 회원에 가입해 주세요.');");
 			out.println("location.href='"+request.getContextPath()+"/study/1120_Database/join.jsp';");
 			out.println("</script>");
 		}
+		
 	}
 }

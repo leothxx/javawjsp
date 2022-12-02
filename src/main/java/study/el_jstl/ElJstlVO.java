@@ -30,7 +30,6 @@ public class ElJstlVO {
 	public void setSu2(int su2) {
 		this.su2 = su2;
 	}
-	
 	@Override
 	public String toString() {
 		return "ElJstlVO [atom=" + atom + ", name=" + name + ", su1=" + su1 + ", su2=" + su2 + "]";

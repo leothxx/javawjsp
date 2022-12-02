@@ -27,7 +27,7 @@
       </li>
       <c:if test="${level <= 4}">
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">BOARD</a>
+	        <a class="nav-link" href="${ctp}/boList.bo">BOARD</a>
 	      </li>
 	      <c:if test="${level != 1}"> <!-- 준회원은 study와 pds를 이용할 수 없다. -->
 		      <li class="nav-item">

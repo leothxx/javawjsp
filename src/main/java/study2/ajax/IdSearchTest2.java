@@ -12,16 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import member.MemberDAO;
 import member.MemberVO;
 
+@SuppressWarnings("serial")
 @WebServlet("/idSearchTest2")
 public class IdSearchTest2 extends HttpServlet {
 	@Override
-	protected void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		
 		MemberDAO dao = new MemberDAO();
+		
 		MemberVO vo = dao.getLoginCheck(mid);
 		
-		//PrintWriter out = response.getWriter();
+		// PrintWriter out = response.getWriter();
+		
 		String name = "";
 		if(vo == null) {
 			name = "찾는 자료가 없습니다.";
@@ -29,6 +32,7 @@ public class IdSearchTest2 extends HttpServlet {
 		else {
 			name = vo.getName();
 		}
-		response.getWriter().write(name); //<<= 현재 창을 의미함
+		
+		response.getWriter().write(name);
 	}
 }

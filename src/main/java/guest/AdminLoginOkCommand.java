@@ -14,7 +14,7 @@ public class AdminLoginOkCommand implements GuestInterface {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		
-		if(mid.equals("admin") && pwd.equals("leo1234")) {
+		if(mid.equals("admin") && pwd.equals("1234")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("sAMid", "admin");
 			request.setAttribute("msg", "adminLoginOk");

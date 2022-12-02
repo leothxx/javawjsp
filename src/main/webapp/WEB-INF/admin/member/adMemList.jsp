@@ -6,21 +6,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>memList.jsp</title>
+  <title>adMemList.jsp</title>
   <jsp:include page="/include/bs4.jsp"></jsp:include>
   <script>
-  	'use strict';
-  	
-  	function midSearch() {
-  		let mid = myform.mid.value;
-  		if(mid.trim() == "") {
-  			alert("검색하실 아이디를 입력하세요!");
-  			myform.mid.focus();
-  		}
-  		else {
-  			myform.submit();
-  		}
-  	}
+    'use strict';
+    
+    function midSearch() {
+      let mid = myform.mid.value;
+      if(mid.trim() == "") {
+    	  alert("아이디를 입력하세요!");
+    	  myform.mid.focus();
+      }
+      else {
+    	  myform.submit();
+      }
+    }
+    
+    function delCheck(idx) {
+    	let ans = confirm("탈퇴처리 시키겠습니까?");
+    	if(ans) location.href='${ctp}/adMemberDel.ad?pag=${pag}&idx='+idx;
+    }
+    
+    function searCheck(e) {
+    	let ans = confirm("등급을 수정하시겠습니까?");
+    	if(!ans) return false;
+    	
+    	let items = e.value.split("/");
+    	
+    	let query = {
+    			idx : items[1],
+    			level : items[0]
+    	}
+    	
+    	$.ajax({
+    		type  : "post",
+    		url   : "${ctp}/adMemberLevelAjax.ad",
+    		data  : query,
+    		success:function(res) {
+  				alert("등급 수정완료!");
+    			location.reload();
+    		},
+    		error : function() {
+    			alert("전송 오류~~");
+    		}
+    	});
+    }
   </script>
 </head>
 <body>
@@ -28,13 +58,13 @@
 <div class="container">
   <h2 class="text-center">전체 회원 리스트</h2>
   <br/>
-  <form name="myform" method="post" action="${ctp}/adMemberSearch.ad?pag=${pag}">
-  	<div class="row">
-  		<div class="col form-inline">
-  			<input type="text" name="mid" class="form-control mr-2" autofocus/>
-  			<input type="button" value="아이디개별검색" onclick="midSearch();" class="btn btn-secondary"/>
-  		</div>
-  		<div class="col text-right"><button type="button" onclick="location.href='${ctp}/adMemList.ad';" class="btn btn-secondary m-2">전체검색</button></div>
+  <form name="myform" method="post" action="${ctp}/adMemberSearch.ad">
+  	<div class="row mb-2">
+  	  <div class="col form-inline">
+  	    <input type="text" name="mid" class="form-control" autofocus />&nbsp;
+  	    <input type="button" value="아이디개별검색" onclick="midSearch();" class="btn btn-secondary" />
+  	  </div>
+  	  <div class="col text-right"><button type="button" onclick="location.href='${ctp}/adMemList.ad';" class="btn btn-secondary">전체검색</button></div>
   	</div>
   </form>
   <table class="table table-hover text-center">
@@ -43,8 +73,8 @@
       <th>아이디</th>
       <th>별명</th>
       <th>성명</th>
-      <th>가입일</th>
-      <th>최근접속일</th>
+      <th>최초가입일</th>
+      <th>마지막접속일</th>
       <th>등급</th>
       <th>탈퇴유무</th>
     </tr>
@@ -57,21 +87,23 @@
         <td>${vo.startDate}</td>
         <td>${vo.lastDate}</td>
         <td>
-        	<form name="levelform" method="post" action="${ctp}/adMemberLevel.ad">
-        		<select name="level" onchange="javascript:alert('회원정보를 변경하시려면, \'등급변경\' 버튼을 클릭하세요!');">
-        			<option value="0" <c:if test="${vo.level==0}">selected</c:if>>관리자</option>
-        			<option value="1" <c:if test="${vo.level==1}">selected</c:if>>준회원</option>
-        			<option value="2" <c:if test="${vo.level==2}">selected</c:if>>정회원</option>
-        			<option value="3" <c:if test="${vo.level==3}">selected</c:if>>우수회원</option>
-        			<option value="4" <c:if test="${vo.level==4}">selected</c:if>>운영자</option>
-        		</select>
-        		<input type="submit" value="등급변경" class="btn btn-warning btn-sm"/>
-        		<input type="hidden" name="idx" value="${vo.idx}"/>
-        	</form>
+          <form name="levelForm" method="post" action="${ctp}/adMemberLevel.ad">
+            <!-- <select name="level" onchange="javascript:alert('회원정보를 변경하시려면, 등급변경버튼을 클릭하세요.');"> -->
+            <select name="level" onchange="searCheck(this)">
+              <option value="0/${vo.idx}" <c:if test="${vo.level==0}">selected</c:if>>관리자</option>
+              <option value="1/${vo.idx}" <c:if test="${vo.level==1}">selected</c:if>>준회원</option>
+              <option value="2/${vo.idx}" <c:if test="${vo.level==2}">selected</c:if>>정회원</option>
+              <option value="3/${vo.idx}" <c:if test="${vo.level==3}">selected</c:if>>우수회원</option>
+            </select>
+            <%-- 
+            <input type="submit" value="등급변경" class="btn btn-warning btn-sm"/>
+            <input type="hidden" name="idx" value="${vo.idx}"/>
+            --%>
+          </form>
         </td>
         <td>
-        	<c:if test="${vo.userDel=='OK'}"><a href="${ctp}/memberDel.ad?idx=${vo.idx}&pag=${pag}"><font color="red">탈퇴신청</font></a></c:if>
-        	<c:if test="${vo.userDel!='OK'}">활동중</c:if>
+          <c:if test="${vo.userDel=='OK'}"><a href="javascript:delCheck(${vo.idx})"><font color="red">탈퇴신청</font></a></c:if>
+          <c:if test="${vo.userDel!='OK'}">활동중</c:if>
         </td>
       </tr>
     </c:forEach>

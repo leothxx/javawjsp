@@ -15,7 +15,8 @@ public class MemberMain extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String mid = (String)session.getAttribute("sMid");
+		
+		String mid = (String) session.getAttribute("sMid");
 		
 		JusorokDAO dao = new JusorokDAO();
 		
@@ -25,7 +26,5 @@ public class MemberMain extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/study/1120_Database/member.jsp");
 		dispatcher.forward(request, response);
-		
-		
 	}
 }

@@ -13,26 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 public class Test3Ok extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");	
-		response.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		PrintWriter out = response.getWriter();
-		String products[] = request.getParameterValues("product");
-		String strProduct = "";
+		String[] products = request.getParameterValues("product");
 		
+		String strProduct = "";
 //		for(String product : products) {
 //			strProduct += product.trim() + "/";
 //		}
+		
 		for(int i=0; i<products.length; i++) {
 			if(products[i].trim() != "") {
-			strProduct += products[i].trim() + "/";				
+				strProduct += products[i].trim() + "/";
 			}
 		}
-		if(!strProduct.equals("")) strProduct = strProduct.substring(0,strProduct.length()-1);		
+		
+		PrintWriter out = response.getWriter();
+		
+		if(!strProduct.equals("")) {
+			strProduct = strProduct.substring(0, strProduct.length()-1);
+		}
 		else {
 			out.println("<script>");
-			out.println("alert('1개 이상의 상품은 등록 하셔야죵 ㅡ ㅡ..!');");
+			out.println("alert('1개 이상의 상품은 등록하셔야 합니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 		}
@@ -41,6 +45,6 @@ public class Test3Ok extends HttpServlet {
 		out.println("<script>");
 		out.println("alert('상품 등록 완료!');");
 		out.println("</script>");
-		out.println("<p><a href='"+request.getContextPath()+"/study/1114/test3.jsp'>돌아가기</a></p>");
+		out.println("<p><a href='"+request.getContextPath()+"/study/1114/test3.jsp'>돌아가기</a>");
 	}
 }

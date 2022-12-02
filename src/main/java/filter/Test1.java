@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Test1 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 //		request.setCharacterEncoding("utf-8");
 //		response.setCharacterEncoding("utf-8");
 //		response.setContentType("text/html; charset=utf-8");
@@ -23,9 +24,9 @@ public class Test1 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.print("<p>성명 : "+name+"</p>");
-		out.print("<p>성별 : "+gender+"</p>");
-		out.print("<p>직업 : "+job+"</p>");
-		out.print("<p><a href='"+request.getContextPath()+"/study/1117/filter/test1.jsp'/>돌아가기</a></p>");
+		out.print("<p>성명 : " + name + "</p>");
+		out.print("<p>성별 : " + gender + "</p>");
+		out.print("<p>직업 : " + job + "</p>");
+		out.print("<p><a href='"+request.getContextPath()+"/study/1117_filter/filter/test1.jsp'>돌아가기</a></p>");
 	}
 }

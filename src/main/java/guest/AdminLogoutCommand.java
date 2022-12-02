@@ -14,6 +14,7 @@ public class AdminLogoutCommand implements GuestInterface {
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("sAMid");
+		
 		request.setAttribute("msg", "adminLogoutOk");
 		request.setAttribute("url", request.getContextPath()+"/guList.gu");
 	}

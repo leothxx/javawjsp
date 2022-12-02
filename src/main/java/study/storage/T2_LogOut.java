@@ -14,16 +14,15 @@ import javax.servlet.http.HttpSession;
 public class T2_LogOut extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); //무조건 외웡
-		String mid = (String)session.getAttribute("sMid");
-		
-		session.invalidate(); //세션 다 날림.
+		HttpSession session = request.getSession();
+		String mid = (String) session.getAttribute("sMid");
+
+		session.invalidate();
 		
 		PrintWriter out = response.getWriter();
-		
-		out.println("<script>");
-		out.println("alert('"+mid+"님 로그아웃 되셨습니당');");
-		out.println("location.href='"+request.getContextPath()+"/study/1118_storage_server/t2_Login.jsp'");
-		out.println("</script>");
+		out.print("<script>");
+		out.print("alert('"+mid+"님 로그아웃 되셨습니다.');");
+		out.print("location.href='"+request.getContextPath()+"/study/1118_storage_server/t2_Login.jsp';");
+		out.print("</script>");
 	}
 }

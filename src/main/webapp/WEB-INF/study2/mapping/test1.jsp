@@ -5,14 +5,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>title</title>
+  <title>test1.jsp</title>
   <jsp:include page="../../../include/bs4.jsp"></jsp:include>
 </head>
 <body>
-  <p><br/></p>
-  <div class="container">
-    <h2>이곳은 webapp\WEB-INF\study2\mapping\test1.jsp 입니다.</h2>
-  </div>
-  <p><br/></p>
+<p><br/></p>
+<div class="container">
+  <h2>이곳은 webapp\WEB-INF\study2\mapping\test1.jsp 입니다.</h2>
+</div>
+<p><br/></p>
 </body>
 </html>

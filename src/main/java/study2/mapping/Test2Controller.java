@@ -18,8 +18,9 @@ public class Test2Controller extends HttpServlet {
 		
 		Test2Ok t2 = new Test2Ok();
 		t2.message();
-		Test2OkOK t22 = new Test2OkOK(); //필요한 객체를 생성하고 사용하고 나옴. [서비스단 개념]
-		t22.message();
+		
+		Test2OkOK t2Ok = new Test2OkOK();
+		t2Ok.message();
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/study2/mapping/test1.jsp");
 		dispatcher.forward(request, response);

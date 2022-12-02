@@ -10,22 +10,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@SuppressWarnings("serial")
+//@WebServlet("/mapping/Test3")
 @WebServlet("*.do")
 public class Test3Controller extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		StringBuffer url = request.getRequestURL(); //너 어디서 보낸건지 정체를 밝혀!!
-		System.out.println("url = "+url);
-		System.out.println("==============================================================");
-		String uri = request.getRequestURI(); //너 어디서 보낸건지 정체를 밝혀!!
-		System.out.println("uri = "+uri);
+		StringBuffer url = request.getRequestURL();
+		System.out.println("url : " + url);
 		
-		//String com = uri.substring(uri.lastIndexOf("/"));
-		//String com = uri.substring(uri.lastIndexOf("/"),uri.length()-3); // /가 있는 위치부터 .이있는 위치 앞까지 가져와라.
-		String com = uri.substring(uri.lastIndexOf("/"),uri.lastIndexOf(".")); // /가 있는 위치부터 .이있는 위치 앞까지 가져와라.
-		System.out.println(com);
-		String viewPage="/WEB-INF/study2/mapping";
+		String uri = request.getRequestURI();
+		System.out.println("uri : " + uri);
+		
+//		String com = uri.substring(uri.lastIndexOf("/"));
+		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
+		System.out.println("com : " + com);
+		
+//		PrintWriter out = response.getWriter();
+		
+		String viewPage = "/WEB-INF/study2/mapping";
+		
 		if(com.equals("/Test3_1")) {
 			viewPage += "/test3_1.jsp";
 		}
@@ -35,28 +39,37 @@ public class Test3Controller extends HttpServlet {
 		else if(com.equals("/Test3_3")) {
 			viewPage += "/test3_3.jsp";
 		}
-		else if(com.equals("/Test4")) {
+		else if(com.equals("/Test4") || com.equals("/test4")) {
 			viewPage += "/test4.jsp";
 		}
-		else if(com.equals("/Test4OK")) {
+		else if(com.equals("/Test4Ok")) {
 			int su1 = request.getParameter("su1")==null ? 0 : Integer.parseInt(request.getParameter("su1"));
 			int su2 = request.getParameter("su2")==null ? 0 : Integer.parseInt(request.getParameter("su2"));
 			String opt = request.getParameter("opt")==null ? "" : request.getParameter("opt");
 			
 			Test4Calc t4 = new Test4Calc();
-			int answer = t4.getCalc(su1, su2, opt);
+			int res = t4.getCalc(su1, su2, opt);
+			
 			request.setAttribute("su1", su1);
 			request.setAttribute("su2", su2);
-			request.setAttribute("opt", opt); //하나로 넘기려면 vo나 dto쓰면 된당.
-			request.setAttribute("answer", answer);
+			request.setAttribute("opt", opt);
+			request.setAttribute("res", res);
+					
 			viewPage += "/test4Ok.jsp";
 		}
 		else {
+//			out.println("<script>");
+//			out.println("alert('잘못된 경로입니다.');");
+//			out.println("location.href='/WEB-INF/study2/mapping/test3.jsp';");
+//			out.println("location.href='"+request.getContextPath()+"/mapping/Test3';");
+//			out.println("</script>");
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/study2/mapping/test3.jsp");
+//			dispatcher.forward(request, response);
 			viewPage += "/test3.jsp";
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/study2/mapping/test3.jsp");
-			//dispatcher.forward(request, response);
 		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);	
+		dispatcher.forward(request, response);
+		
 	}
 }

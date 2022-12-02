@@ -1,12 +1,12 @@
 package study2.ajax;
 
 public class UserVO {
-	private int idx;
-	private String mid;
-	private String name;
-	private int age;
-	private String address;
-	
+  private int idx;
+  private String mid;
+  private String name;
+  private int age;
+  private String address;
+  
 	public int getIdx() {
 		return idx;
 	}

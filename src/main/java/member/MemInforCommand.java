@@ -13,7 +13,7 @@ public class MemInforCommand implements MemberInterface, AdminInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid");
-		int pag = request.getParameter("pag")==null ? 1 : Integer.parseInt(request.getParameter("pag"));
+		int pag = request.getParameter("pag")=="" ? 1 : Integer.parseInt(request.getParameter("pag"));
 		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getLoginCheck(mid);

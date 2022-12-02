@@ -20,55 +20,60 @@ public class UserDAO {
 	
 	UserVO vo = null;
 
+	// user의 정보를 모두 가져오기
 	public ArrayList<UserVO> getUserList() {
 		ArrayList<UserVO> vos = new ArrayList<>();
 		try {
-			sql = "select * from user";
+			sql = "select * from user order by idx desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				vo = new UserVO();
+				
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
 				vo.setName(rs.getString("name"));
 				vo.setAge(rs.getInt("age"));
 				vo.setAddress(rs.getString("address"));
+				
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL에러 발생!"+e.getMessage());
+			System.out.println("SQL 에러 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
 		return vos;
 	}
 
-	// 유저 개별 조회 검색
+	// user 개별조회 검색
 	public UserVO getUserSearch(String mid) {
 		try {
 			sql = "select * from user where mid = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				vo = new UserVO();
 				vo.setIdx(rs.getInt("idx"));
-				vo.setMid(mid);
+				vo.setMid(rs.getString("mid"));
 				vo.setName(rs.getString("name"));
 				vo.setAge(rs.getInt("age"));
 				vo.setAddress(rs.getString("address"));
 			}
 		} catch (SQLException e) {
-			System.out.println("SQL에러 발생!"+e.getMessage());
+			System.out.println("SQL 에러 : " + e.getMessage());
 		} finally {
 			getConn.rsClose();
 		}
 		return vo;
 	}
 
-	// 유저 삭제
+	// user 삭제
 	public String setUserDel(String mid) {
-		String res = "0"; //숫자로 헤더로 값을 넘기면 가끔 400번 타입 에러가 발생할 때가 있다. 그러기에 String타입으로 넘긴다.
+		String res = "0";
 		try {
 			sql = "delete from user where mid = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -76,11 +81,13 @@ public class UserDAO {
 			pstmt.executeUpdate();
 			res = "1";
 		} catch (SQLException e) {
-			System.out.println("SQL에러 발생!"+e.getMessage());
+			System.out.println("SQL 에러 : " + e.getMessage());
 		} finally {
 			getConn.pstmtClose();
 		}
 		return res;
 	}
+
 	
+
 }

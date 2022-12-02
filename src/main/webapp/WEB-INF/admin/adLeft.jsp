@@ -12,10 +12,10 @@
 <body>
 <p><br/></p>
 <div class="container text-center">
-  <h3>관리자메뉴</h3>
+  <h5>관리자메뉴</h5>
   <hr/>
   <p>
-  	<a href="${ctp}/" target="_top">홈으로</a>
+    <a href="${ctp}/" target="_top">홈으로</a>
   </p>
   <hr/>
   <p>

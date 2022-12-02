@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/study/el_jstl_El1")
-public class El1 extends HttpServlet {
+@SuppressWarnings("serial")
+@WebServlet("/study/el_jstl/El1")
+public class El1 extends HttpServlet{
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ElJstlVO vo = new ElJstlVO();
@@ -21,7 +23,11 @@ public class El1 extends HttpServlet {
 		vo.setSu2(Integer.parseInt(request.getParameter("su2")));
 		
 		request.setAttribute("vo", vo);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/study/1121_EL_JSTL/el1.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	
+	
 }

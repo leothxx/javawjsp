@@ -37,6 +37,7 @@ public class MemLoginOkCommand implements MemberInterface {
 		// 1.
 		HttpSession session = request.getSession();
 		session.setAttribute("sMid", mid);
+		session.setAttribute("sKey", 0);
 		session.setAttribute("sNickName", vo.getNickName());
 		session.setAttribute("sLevel", vo.getLevel());
 		

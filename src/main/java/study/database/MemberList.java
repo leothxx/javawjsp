@@ -18,7 +18,8 @@ public class MemberList extends HttpServlet {
 		
 		ArrayList<JusorokVO> vos = dao.getMemberList();
 		
-		request.setAttribute("vos",vos);
+		request.setAttribute("vos", vos);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/study/1120_Database/memberList.jsp");
 		dispatcher.forward(request, response);
 	}

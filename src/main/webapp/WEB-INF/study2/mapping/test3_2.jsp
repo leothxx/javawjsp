@@ -5,16 +5,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>title</title>
+  <title>test3_2.jsp</title>
   <jsp:include page="../../../include/bs4.jsp"></jsp:include>
 </head>
 <body>
-  <p><br/></p>
-  <div class="container">
-    <h2>이곳은 webapp\WEB-INF\study2\mapping\test3_2.jsp 입니다.</h2>
-    <h3>test3_2</h3>
-    <img src="../../images/첼시.jpg"/>
-  </div>
-  <p><br/></p>
+<p><br/></p>
+<div class="container">
+  <h2>이곳은 webapp\WEB-INF\study2\mapping\test3_2.jsp 입니다.</h2>
+  <h3>test3_2.jsp</h3>
+</div>
+<p><br/></p>
 </body>
 </html>

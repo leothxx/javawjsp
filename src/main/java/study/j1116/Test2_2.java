@@ -14,21 +14,21 @@ public class Test2_2 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String name = request.getParameter("name")==null ? "":request.getParameter("name");
-		String schoolNumber = request.getParameter("schoolNumber")==null ? "":request.getParameter("schoolNumber");
-		int kor = request.getParameter("kor")==null ? 0: Integer.parseInt(request.getParameter("kor"));
-		int eng = request.getParameter("eng")==null ? 0: Integer.parseInt(request.getParameter("eng"));
-		int mat = request.getParameter("mat")==null ? 0: Integer.parseInt(request.getParameter("mat"));
-		int soc = request.getParameter("soc")==null ? 0: Integer.parseInt(request.getParameter("soc"));
-		int sci = request.getParameter("sci")==null ? 0: Integer.parseInt(request.getParameter("sci"));
+		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
+		String hakbun = request.getParameter("hakbun")==null ? "" : request.getParameter("hakbun");
+		int kor = request.getParameter("kor")==null ? 0 : Integer.parseInt(request.getParameter("kor"));
+		int eng = request.getParameter("eng")==null ? 0 : Integer.parseInt(request.getParameter("eng"));
+		int mat = request.getParameter("mat")==null ? 0 : Integer.parseInt(request.getParameter("mat"));
+		int soc = request.getParameter("soc")==null ? 0 : Integer.parseInt(request.getParameter("soc"));
+		int sci = request.getParameter("sci")==null ? 0 : Integer.parseInt(request.getParameter("sci"));
 		
-		int tot = kor+eng+mat+soc+sci;
+		int tot = kor + eng + mat + soc + sci;
 		double avg = tot / 5.0;
 		int intAvg = (int)(avg / 10.0);
 		char grade;
+		
 		switch (intAvg) {
 			case 10:
 			case 9:
@@ -48,29 +48,25 @@ public class Test2_2 extends HttpServlet {
 		}
 		
 		// 아래는 브라우저에 처리 결과를 찍는 작업...
-		
 		/*
 		PrintWriter out = response.getWriter();
-		out.println("<h2>성 적 확 인</h2>");
-		out.println("성명 : "+name+"<br/>");
-		out.println("학번 : "+schoolNumber+"<br/>");
-		out.println("국어 : "+kor+"<br/>");
-		out.println("영어 : "+eng+"<br/>");
-		out.println("수학 : "+mat+"<br/>");
-		out.println("사회 : "+soc+"<br/>");
-		out.println("과학 : "+sci+"<br/>");
-		out.println("총점 : "+tot+"<br/>");
-		out.println("평균 : "+avg+"<br/>");
-		out.println("학점 : "+grade+"<br/>");
-		out.println("<hr/>");
-		out.println("<p><a href='"+request.getContextPath()+"/study/1116/test2.jsp'>돌아가기</a></p>");
-		out.println("<hr/>");
-		out.println("<div><h2>점수가 그 게 맞 니 ?</h2></div>");
-		out.println("<p><img src='"+request.getContextPath()+"/images/gif/19.gif' width='400px'/></p>");
+		
+		out.print("<h2>성 적 확 인</h2>");
+		out.print("학번 : "+hakbun+"<br/>");
+		out.print("성명 : "+name+"<br/>");
+		out.print("국어 : "+kor+"<br/>");
+		out.print("영어 : "+eng+"<br/>");
+		out.print("수학 : "+mat+"<br/>");
+		out.print("사회 : "+soc+"<br/>");
+		out.print("과학 : "+sci+"<br/>");
+		out.print("총점 : "+tot+"<br/>");
+		out.print("평균 : "+avg+"<br/>");
+		out.print("학점 : "+grade+"<br/>");
+		out.print("<hr/>");
+		out.print("<p><a href='"+request.getContextPath()+"/study/1116/test2.jsp'>돌아가기</a></p>");
 		*/
 		
-		// 서버에서 get방식으로의 전송방법 
-		response.sendRedirect(request.getContextPath()+"/study/1116/test2Ok3.jsp?name="+name+"&schoolNumber="+schoolNumber+"&kor="+kor+"&eng="+eng+"&mat="+mat+"&soc="+soc+"&sci="+sci+"&tot="+tot+"&avg="+avg+"&grade="+grade);
-		
+		// 서버에서 get방식으로의 전송방법
+		response.sendRedirect(request.getContextPath()+"/study/1116/test2Ok.jsp?hakbun="+hakbun+"&name="+name+"&kor="+kor+"&eng="+eng+"&mat="+mat+"&soc="+soc+"&sci="+sci+"&tot="+tot+"&avg="+avg+"&grade="+grade);
 	}
 }

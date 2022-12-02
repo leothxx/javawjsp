@@ -34,12 +34,12 @@ public class AdminController extends HttpServlet {
 			viewPage += "/adContent.jsp";
 		}
 		else if(com.equals("/adMemList")) {
-			command = new AdMemberListCommand();
+			command = new AdMemListCommand();
 			command.execute(request, response);
 			viewPage += "/member/adMemList.jsp";
 		}
 		else if(com.equals("/adMemInfor")) {
-			command = new MemInforCommand(); //똑같은 내용이기에 다중상속하여 meminforcommand를 ad에서도 이용함.
+			command = new MemInforCommand();
 			command.execute(request, response);
 			viewPage += "/member/adMemInfor.jsp";
 		}
@@ -53,12 +53,17 @@ public class AdminController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/memberDel")) {
-			command = new MemberDelCommand();
+		else if(com.equals("/adMemberLevelAjax")) {
+			// command = new AdMemberLevelAjaxCommand();
+			command = new AdMemberLevelCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/adMemberDel")) {
+			command = new AdMemberDelCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

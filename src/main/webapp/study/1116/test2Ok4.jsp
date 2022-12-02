@@ -18,7 +18,7 @@
     <h2>이곳은 test2Ok4.jsp 입니동</h2>
     <p>jsp에서의 vo : <%=vo %></p>
     <p>성명 : <%=vo.getName()%></p>
-    <p>학번 : <%=vo.getSchoolNumber()%></p>
+    <p>학번 : <%=vo.getHakbun()%></p>
     <p>국어 : <%=vo.getKor()%></p>
     <p>영어 : <%=vo.getEng()%></p>
     <p>수학 : <%=vo.getMat()%></p>

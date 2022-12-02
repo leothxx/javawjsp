@@ -12,8 +12,11 @@ public class MemDeleteCommand implements MemberInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
 		String mid = (String) session.getAttribute("sMid");
+		
 		MemberDAO dao = new MemberDAO();
+		
 		dao.setMemberDel(mid);
 		
 		request.setAttribute("msg", "memberDelOk");

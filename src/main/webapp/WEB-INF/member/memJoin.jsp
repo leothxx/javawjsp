@@ -9,7 +9,7 @@
   <title>memJoin.jsp</title>
   <jsp:include page="/include/bs4.jsp"></jsp:include>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="${ctp}/js/postcode.js"></script>
+  <script src="${ctp}/js/woo.js"></script>
   <script>
     'use strict';
     // 아이디와 닉네임 중복버튼을 클릭했는지를 확인하기위한 전역변수를 정의한다.(버튼클릭후에도 내용을 수정했다면 초기값은 0으로 셋팅해서 버튼을 누를수 있도록해야한다.)

@@ -36,6 +36,13 @@
   	else if(msg == "memberDelOk") msg = "정상적으로 탈퇴 됐다잉~? 곧 너 줘패러간다";
   	else if(msg == "memberDelOkay") msg = "관리자님 정상적으로 회원 탈퇴가 완료되었습니다!!!";
   	else if(msg == "memberDelNo") msg = "관리자님 회원 탈퇴가 실패하였습니다 ㅠㅠ";
+  	else if(msg == "boInputOk") msg = "게시글이 업로드 되었습니다~";
+  	else if(msg == "boInputNo") msg = "게시글 업로드가 정상적이지 않습니다.";
+  	else if(msg == "boDeleteOk") msg = "게시글이 삭제 되었습니다.";
+  	else if(msg == "boDeleteNo") msg = "게시글이 삭제 되지 않았습니다.";
+  	else if(msg == "userCheckNo") msg = "잘못된 경로로 접근하였습니다.";
+  	else if(msg == "boUpdateOk") msg = "게시글이 수정되었습니다.";
+  	else if(msg == "boUpdateNo") msg = "게시글 수정 실패!";
   	
 		alert(msg);
 		if(url != "") location.href = url;

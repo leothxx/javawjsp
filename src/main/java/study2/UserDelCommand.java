@@ -16,8 +16,10 @@ public class UserDelCommand implements StudyInterface {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		
 		UserDAO dao = new UserDAO();
+		
 		String res = dao.setUserDel(mid);
 		
 		response.getWriter().write(res);
 	}
+
 }

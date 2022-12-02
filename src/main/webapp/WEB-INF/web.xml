@@ -8,96 +8,98 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list> 
+  </welcome-file-list>
   
-  <!-- Controller 설정  -->
-  <!-- <servlet>
- 		<servlet-name>test2</servlet-name> 
- 		<servlet-class>j1111.Test2</servlet-class>
+  <!-- Controller설정 -->
+  <!-- 
+  <servlet>
+    <servlet-name>test2</servlet-name>
+    <servlet-class>j1111.Test2</servlet-class>
   </servlet>
- 		  
- 	<servlet-mapping>
- 		<servlet-name>test2</servlet-name>
- 		<url-pattern>/t2</url-pattern>
- 	</servlet-mapping> -->
- 	
- 	<servlet> <!-- 서블릿을 연결할거다. -->
- 		<servlet-name>test2</servlet-name> <!-- test2라는 별명을 만든다. -->
- 		<servlet-class>j1111.Test2</servlet-class> <!-- test2는 j1111패키지에 있는 Test2 파일이다. -->
- 	</servlet>
- 	
- 	<servlet-mapping>
- 		<servlet-name>test2</servlet-name> <!-- 별명 test2를 맵핑할것이다. -->
- 		<url-pattern>/T2</url-pattern> <!-- /t2로 url 맵핑한다. -->
- 	</servlet-mapping>
- 	
- 	<servlet>
- 		<servlet-name>study12</servlet-name>
- 		<servlet-class>j1111.Test12</servlet-class>
- 	</servlet>
- 	
- 	<servlet-mapping>
- 		<servlet-name>study12</servlet-name>
-		<url-pattern>/test12ok</url-pattern> 		
- 	</servlet-mapping>
- 	
- 	<!-- 특정 서블릿에 초기값을 할당하기 -->
- 	
- 	<!-- <servlet>
- 		<servlet-name>green</servlet-name> green 별명으로 지정
- 		<servlet-class>j1117.Green</servlet-class> j1117패키지에 있는 Green
- 		<init-param>
- 			<param-name>mid</param-name> 변수명 mid
- 			<param-value>admin</param-value> 값 admin
- 		</init-param>
- 		<init-param>
- 			<param-name>pwd</param-name> 변수명 mid
- 			<param-value>1234</param-value> 값 admin
- 		</init-param>
- 		<init-param>
- 			<param-name>className</param-name> 변수명 mid
- 			<param-value>기술개발2팀</param-value> 값 admin
- 		</init-param>
- 	</servlet>
- 	<servlet-mapping> 맵핑!
- 		<servlet-name>green</servlet-name>
- 		<url-pattern>/Green</url-pattern>
- 	</servlet-mapping> -->
- 	 
- 	 
- 	<!-- 공통 변수에 초기값 할당하기. -->
- 	<context-param> 
- 		<param-name>logoName</param-name>
- 		<param-value>Coogle</param-value>
- 	</context-param>
- 	<context-param>
- 		<param-name>homeAddress</param-name>
- 		<param-value>http://coocle.com/</param-value>
- 	</context-param>
+  <servlet-mapping>
+    <servlet-name>test2</servlet-name>
+    <url-pattern>/t2</url-pattern>
+  </servlet-mapping>
+   -->
    
-   <!-- 에러 페이지 설정! -->
-   
-   <!-- <error-page>
-   		<error-code>400</error-code> 에러코드 500번 발생시
-   		<location>/study/1117/error/error400.jsp</location> 해당 위치로 보낸당.
-   </error-page>
-   <error-page>
-   		<error-code>404</error-code> 에러코드 500번 발생시
-   		<location>/study/1117/error/error400.jsp</location> 해당 위치로 보낸당.
-   </error-page>
-   <error-page>
-   		<error-code>500</error-code> 에러코드 500번 발생시
-   		<location>/study/1117/error/error500.jsp</location> 해당 위치로 보낸당.
-   </error-page> -->
-   
-   <!-- Filter 매핑처리 -->
-   <!-- <filter>
-   	<filter-name>encodingFilter</filter-name> 별명은 클래스명을 가져와서 앞글자를 보통 소문자로 지음.
-   	<filter-class>filter.EncodingFilter</filter-class>
-   </filter>
-   <filter-mapping>
-   	<filter-name>encodingFilter</filter-name>
-   	<url-pattern>/*</url-pattern> 모든 경로에 있는 파일을 인코딩필터를 통과시키겠다고 지정. 모든 경로에 있는 파일은 인코딩필터 java파일을 거쳐야함.
-   </filter-mapping> -->
+  <servlet>
+    <servlet-name>test2</servlet-name>
+    <servlet-class>j1111.Test2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test2</servlet-name>
+  	<url-pattern>/T2</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>test12</servlet-name>
+    <servlet-class>j1111.Test12</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test12</servlet-name>
+  	<url-pattern>/test12ok</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 특정 서블릿에 초기값을 할당하기 -->
+  <!-- 
+  <servlet>
+    <servlet-name>green</servlet-name>
+    <servlet-class>j1117.Green</servlet-class>
+    <init-param>
+    	<param-name>mid</param-name>
+    	<param-value>admin</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>pwd</param-name>
+    	<param-value>1234</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>className</param-name>
+    	<param-value>인사과</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>green</servlet-name>
+  	<url-pattern>/Green</url-pattern>
+  </servlet-mapping>
+  -->
+  
+  <!-- 공통변수에 초기값 할당하기 -->
+  <context-param>
+    <param-name>logoName</param-name>
+    <param-value>Java Green Company</param-value>
+  </context-param>
+  <context-param>
+    <param-name>homeAddress</param-name>
+    <param-value>http://192.168.50.20:9090/javawjsp/</param-value>
+  </context-param>
+  
+  <!-- error페이지 설정하기 -->
+  <!-- 
+  <error-page>
+    <error-code>400</error-code>
+    <location>/study/1117/error/error400.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/study/1117/error/error400.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/study/1117/error/error500.jsp</location>
+  </error-page>
+  -->
+  
+  <!-- Filter 매핑처리 -->
+  <!-- 
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  -->
   
 </web-app>

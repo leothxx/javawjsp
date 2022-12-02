@@ -10,7 +10,8 @@ public class GuDeleteCommand implements GuestInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = request.getParameter("idx")==null ? 0 : Integer.parseInt(request.getParameter("idx"));
+		int idx = request.getParameter("idx")=="" ? 0 : Integer.parseInt(request.getParameter("idx"));
+		
 		GuestDAO dao = new GuestDAO();
 		
 		if(idx != 0) {
@@ -26,4 +27,3 @@ public class GuDeleteCommand implements GuestInterface {
 	}
 
 }
-

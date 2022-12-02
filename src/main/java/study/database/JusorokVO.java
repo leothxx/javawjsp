@@ -8,7 +8,6 @@ public class JusorokVO {
 	private int point;
 	private String lastDate;
 	
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -45,7 +44,6 @@ public class JusorokVO {
 	public void setLastDate(String lastDate) {
 		this.lastDate = lastDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "JusorokVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", point=" + point

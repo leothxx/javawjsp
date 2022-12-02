@@ -6,8 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.Security;
-
 import conn.SecurityUtil;
 
 public class PassOk2Command implements StudyInterface {
@@ -19,8 +17,10 @@ public class PassOk2Command implements StudyInterface {
 		
 		SecurityUtil security = new SecurityUtil();
 		String shaPwd = security.encryptSHA256(pwd);
+		
 		request.setAttribute("mid", mid);
 		request.setAttribute("pwd", pwd);
 		request.setAttribute("shaPwd", shaPwd);
 	}
+
 }
