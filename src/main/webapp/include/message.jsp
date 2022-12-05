@@ -43,6 +43,9 @@
   	else if(msg == "userCheckNo") msg = "잘못된 경로로 접근하였습니다.";
   	else if(msg == "boUpdateOk") msg = "게시글이 수정되었습니다.";
   	else if(msg == "boUpdateNo") msg = "게시글 수정 실패!";
+  	else if(msg == "upLoad1Ok") msg = "파일이 정상적으로 업로드 되었습니다";
+  	else if(msg == "upLoad1No") msg = "파일 업로드에 있어 에러가 발생하였습니다";
+  	
   	
 		alert(msg);
 		if(url != "") location.href = url;

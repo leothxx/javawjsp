@@ -100,3 +100,29 @@ create table boardReply (
 	on delete restrict */
 );
 desc boardReply;
+
+/* 댓글의 수를 전체 List에 출력하기 연습 */
+select * from boardReply order by idx desc;
+-- board테이블의 고유번호 29번 글에 딸려있는 댓글의 개수는 ?
+select count(*) as replyCnt from boardReply where boardIdx = 29;
+-- board테이블의 고유번호 29번 글에 딸려있는 댓글의 개수는 ?
+-- 원본글의 고유번호와 함께 출력, 개수의 별명은 replyCnt
+select boardIdx, count(*) as replyCnt from boardReply where boardIdx = 29;
+
+-- board테이블의 고유번호 29번 글에 딸려있는 댓글의 개수는 ?
+-- 원본글의 고유번호와 함께 출력, 개수의 별명은 replyCnt
+-- 이때 원본글 작성자의 닉네임을 함께 출력하시오. 단, 닉네임은 board(원본글)테이블에서 가져와서 출력하시오.
+select boardIdx, nickName,  count(*) as replyCnt from boardReply where boardIdx = 29;
+SELECT boardIdx, (SELECT nickName FROM board WHERE idx = 29) AS nickName,  count(*) AS replyCnt FROM boardReply WHERE boardIdx = 29;
+
+-- 앞의 문장을 부모테이블의 관점에서 보자.
+SELECT mid, nickName FROM board WHERE idx = 29;
+-- 앞의 닉네임을 자식(댓글)테이블(boardReply)에서 가져와서 보여준다면 ??
+SELECT mid, (SELECT nickName FROM boardReply WHERE boardIdx = 29) AS nickName FROM board WHERE idx = 29; -- 부모 관점에서는 해당 idx에 자료가 한건이지만, 자식관점에서는 idx에 따른 nickName이 여러개가 나오기 때문에 이걸 수행 할 수 없다고 에러남.
+-- 부모 관점(board)에서 고유번호 29번의 아이디와, 현재글에 달려있는 댓글의 개수 ?
+SELECT mid, (SELECT count(*) FROM boardReply WHERE boardIdx = 29) AS replyCnt FROM board WHERE idx = 29;
+
+-- 부모 관점(board)에서 board테이블의 모든 내용과, 현재글에 달려있는 댓글의 개수를 가져오되, 최근글 5개만 출력. 핵심 : board.idx 보드테이블에 있는 idx와 같아야한다는 뜻.
+SELECT *, (SELECT count(*) FROM boardReply WHERE boardIdx = board.idx) AS replyCount FROM board ORDER BY idx DESC limit 5;
+-- 각각의 테이블에 별명을 붙여서 앞의 내용을 변경시켜보자. board 테이블의 별명을 b로 줬다.
+SELECT *, (SELECT count(*) FROM boardReply WHERE boardIdx = b.idx) AS replyCount FROM board b ORDER BY idx DESC limit 5;

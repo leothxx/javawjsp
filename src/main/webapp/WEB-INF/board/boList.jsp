@@ -59,7 +59,12 @@
     <c:forEach var="vo" items="${vos}">
     	<tr>
     	  <td>${curScrStartNo}</td>
-    	  <td class="text-left"><a href="${ctp}/boContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="title">${vo.title}<c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif"/></c:if></a></td>
+    	  <td class="text-left">
+    	  	<a href="${ctp}/boContent.bo?idx=${vo.idx}&pag=${pag}&pageSize=${pageSize}" class="title">${vo.title}
+    	  		<c:if test="${vo.replyCnt != 0}">[${vo.replyCnt}]</c:if>
+    	  		<c:if test="${vo.hour_diff <= 24}"><img src="${ctp}/images/new.gif"/></c:if>
+   	  		</a>
+    	  </td>
     	  <td>${vo.nickName}</td>
     	  <%-- <td>${fn:substring(vo.wDate,0,10)}(${vo.day_diff})</td> --%>
     	  <%-- <td>${vo.day_diff > 24 ? fn:substring(vo.wDate,0,10) : fn:substring(vo.wDate,11,16)}</td> --%>
