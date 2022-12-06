@@ -31,7 +31,7 @@
 	      </li>
 	      <c:if test="${level != 1}"> <!-- 준회원은 study와 pds를 이용할 수 없다. -->
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">PDS</a> 
+		        <a class="nav-link" href="${ctp}/pdsList.pds">PDS</a> 
 		      </li>    
 		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">STUDY</a>
