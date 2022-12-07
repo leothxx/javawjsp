@@ -63,41 +63,14 @@
     		}
     	});
   	}
-  	// 모달창을 통해서 비밀번호확인 후 파일을 삭제처리(AJAX 처리)
-  	function pdsDelCheckModalOk() {
-  		let idx = pwdModalForm.idx.value;
-  		let fSName = pwdModalForm.fSName.value;
-  		let pwd = pwdModalForm.pwd.value;
-  		let query = {
-  				idx : idx,
-  				fSName : fSName,
-  				pwd : pwd
-  		};
-  		
-  		$.ajax({
-    		type   : "post",
-    		url    : "${ctp}/pdsDelete.pds",
-    		data   : query,
-    		success:function(res) {
-    			if(res == "1") {
-    				alert("삭제되었습니다.");
-    				location.reload();
-    			}
-    			else {
-    				alert("삭제 실패~~");
-    			}
-    		},
-    		error : function() {
-    			alert("전송 오류~~");
-    		}
-    	});
-  	}
   	
   	// 선택한 항목의 자료 삭제하기 (modal창을 통하여 비밀번호를 입력 받아서 처리.)
-    function pdsDelCheckModal(idx,fSName) {
+    function pdsDelCheckModal(idx,fSName,pag,part) {
     	$("#myPwdModal").on("show.bs.modal", function(e){
     		$(".modal-body #idx").val(idx);
     		$(".modal-body #fSName").val(fSName);
+    		$(".modal-body #pag").val(pag);
+    		$(".modal-body #part").val(part);
     	});
     }
   	
@@ -115,17 +88,6 @@
     		}
     	});
     }
-  	// 검색기를 이용한 검색처리
-  	function searchCheck() {
-  		let searchString = $("#searchString").val();
-  		if(searchString.trim() == "") {
-  			alert("찾고자 하는 검색어를 입력하세요!");
-  			searchForm.searchString.focus();
-  		}
-  		else {
-  			searchForm.submit();
-  		}
-  	}
   </script>
 </head>
 <body>
@@ -196,10 +158,10 @@
     			</td>
     			<td>${vo.downNum}</td>
     			<td>
-    				<a href="#" onclick="modalView('${vo.title}','${vo.nickName}','${vo.mid}','${vo.part}','${vo.fName}','${vo.fSName}','${vo.fSize}','${vo.downNum}','${vo.fDate}')" class="badge badge-primary" data-toggle="modal" data-target="#myModal">모달창</a><br/>
-    				<a href="${ctp}/pdsTotalDown.pds?idx=${vo.idx}" class="badge badge-info">전체다운</a><br/>
-    				<a href="javascript:pdsDelCheck('${vo.idx}','${vo.fSName}')" class="badge badge-danger mb-1">삭제1</a><br/>
-    				<a href="#" onclick="pdsDelCheckModal('${vo.idx}','${vo.fSName}')" class="badge badge-warning" data-toggle="modal" data-target="#myPwdModal">삭제2</a>
+    				<a href="#" onclick="modalView('${vo.title}','${vo.nickName}','${vo.mid}','${vo.part}','${vo.fName}','${vo.fSName}','${vo.fSize}','${vo.downNum}','${vo.fDate}')" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">모달창</a><br/>
+    				전체다운<br/>
+    				<a href="javascript:pdsDelCheck('${vo.idx}','${vo.fSName}')" class="btn btn-danger btn-sm mb-1">삭제1</a><br/>
+    				<a href="#" onclick="pdsDelCheckModal('${vo.idx}','${vo.fSName}','${pag}','${vo.part}')" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myPwdModal">삭제2</a>
    				</td>
     		</tr>
 	    	<c:set var="curScrStartNo" value="${curScrStartNo -1}"/>
@@ -234,22 +196,6 @@
 	</div>
 	<!-- 블록 페이지 끝 -->
   
- <!--  검색기 처리 시작 -->
-	<div class="cantainer text-center">
-		<form name="searchForm" method="post" action="${ctp}/pdsSearch.pds">
-			<b>검색 : </b>
-			<select name="search">
-				<option value="title">제목</option>
-				<option value="nickName">작성자</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="searchString" id="searchString"/>
-			<input type="button" value="검색" onclick="searchCheck()" class="btn btn-secondary btn-sm"/>
-			<input type="hidden" name="pag" value="${pag}"/>
-			<input type="hidden" name="pageSize" value="${pageSize}"/>
-		</form>
-	</div>
-<!-- 검색기 처리 끝 -->
   <!-- The Modal (모달창 클릭시 자료실의 내용을 모달창에 출력한다.) -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog">
@@ -301,9 +247,11 @@
 	        <form name="pwdModalForm" method="post" action="${ctp}/pdsPwdCheck.pds" class="was-validated">
 	          비밀번호 :
 	          <input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력하세요." class="form-control mb-2" required />
-	          <input type="button" value="비밀번호확인후전송" onclick="pdsDelCheckModalOk()" class="btn btn-success form-control"/>
+	          <input type="submit" value="비밀번호확인후전송" class="btn btn-success form-control"/>
 	          <input type="hidden" name="idx" id="idx"/>
 	          <input type="hidden" name="fSName" id="fSName"/>
+	          <input type="hidden" name="pag" id="pag"/>
+	          <input type="hidden" name="part" id="part"/>
 	        </form>
 	      </div>
 	      

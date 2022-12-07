@@ -133,6 +133,9 @@
   <p><br/></p>
   <div class="container">
     <h2 class="text-center">자 료 실 리 스 트(${part})</h2>
+    <div class="text-center">
+  		(${searchTitle}(으)로 ${searchString}(을)를 검색한 결과 <font color="red">${searchCount}</font>건이 검색되었습니다.)
+  	</div>
     <br/>
     <table class="table table-borderless">
     	<tr>
@@ -163,6 +166,7 @@
     		<td>다운수</td>
     		<td>비고</td>
     	</tr>
+    	<c:set var="curScrStartNo" value="${searchCount}"/>
     	<c:forEach var="vo" items="${vos}">
     		<tr>
     			<td>${curScrStartNo}</td>
@@ -207,32 +211,6 @@
     	<tr><td colspan="8" class="p-0 m-0"></td></tr>
     </table>
   </div>
-  <!-- 블록 페이지 시작 -->
-	<div class="text-center">
-	  <ul class="pagination justify-content-center">
-	    <c:if test="${pag > 1}">
-	      <li class="page-item"><a class="page-link text-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=1">첫페이지</a></li>
-	    </c:if>
-	    <c:if test="${curBlock > 0}">
-	      <li class="page-item"><a class="page-link text-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=${(curBlock-1)*blockSize + 1}">이전블록</a></li>
-	    </c:if>
-	    <c:forEach var="i" begin="${(curBlock)*blockSize + 1}" end="${(curBlock)*blockSize + blockSize}" varStatus="st">
-	      <c:if test="${i <= totPage && i == pag}">
-	    		<li class="page-item active"><a class="page-link bg-secondary border-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=${i}">${i}</a></li>
-	    	</c:if>
-	      <c:if test="${i <= totPage && i != pag}">
-	    		<li class="page-item"><a class="page-link text-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=${i}">${i}</a></li>
-	    	</c:if>
-	    </c:forEach>
-	    <c:if test="${curBlock < lastBlock}">
-	      <li class="page-item"><a class="page-link text-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=${(curBlock+1)*blockSize + 1}">다음블록</a></li>
-	    </c:if>
-	    <c:if test="${pag < totPage}">
-	      <li class="page-item"><a class="page-link text-secondary" href="${ctp}/pdsList.pds?pageSize=${pageSize}&pag=${totPage}">마지막페이지</a></li>
-	    </c:if>
-	  </ul>
-	</div>
-	<!-- 블록 페이지 끝 -->
   
  <!--  검색기 처리 시작 -->
 	<div class="cantainer text-center">
@@ -250,6 +228,7 @@
 		</form>
 	</div>
 <!-- 검색기 처리 끝 -->
+<div class="text-center"><a href="${ctp}/pdsList.pds?pag=${pag}&pageSize=${pageSize}" class="btn btn-info">돌아가기</a></div>
   <!-- The Modal (모달창 클릭시 자료실의 내용을 모달창에 출력한다.) -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog">

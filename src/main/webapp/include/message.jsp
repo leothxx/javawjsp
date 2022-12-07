@@ -47,6 +47,8 @@
   	else if(msg == "upLoad1No") msg = "파일 업로드에 있어 에러가 발생하였습니다";
   	else if(msg == "pdsInputOk") msg = "자료실에 정상적으로 파일이 업로드 되었습니다";
   	else if(msg == "pdsInputNo") msg = "파일 업로드에 실패하였습니다";
+  	else if(msg == "pdsPwdCheckOk") msg = "정상적으로 삭제 되었습니다";
+  	else if(msg == "pdsPwdCheckNo") msg = "패스워드가 올바르지 않아 삭제가 되지 않았습니다";
   	
   	
 		alert(msg);

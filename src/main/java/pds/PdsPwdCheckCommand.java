@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import conn.SecurityUtil;
 
-public class PdsDeleteCommand implements PdsInterface {
+public class PdsPwdCheckCommand implements PdsInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pag = request.getParameter("pag")==null ? 0 : Integer.parseInt(request.getParameter("pag"));
+		String part = request.getParameter("part")==null ? "전체" : request.getParameter("part");
+		
 		int idx = request.getParameter("idx") == null ? 0 : Integer.parseInt( request.getParameter("idx"));
 		String pwd = request.getParameter("pwd") == null ? "" : request.getParameter("pwd");
 		String fSName_ = request.getParameter("fSName") == null ? "" : request.getParameter("fSName");
@@ -46,6 +49,12 @@ public class PdsDeleteCommand implements PdsInterface {
 		}
 		
 		
-		response.getWriter().write(res);
-	}
+		if(res.equals("1")) {
+			request.setAttribute("msg", "pdsPwdCheckOk");
+		}
+		else {
+			request.setAttribute("msg", "pdsPwdCheckNo");
+		}
+		request.setAttribute("url", request.getContextPath()+"/pdsList.pds?part="+part+"&pag="+pag);
+	}	
 }

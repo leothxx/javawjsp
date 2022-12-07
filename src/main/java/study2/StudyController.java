@@ -103,6 +103,11 @@ public class StudyController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if(com.equals("/javaDown")) {
+			command = new JavaDownCommand();
+			command.execute(request, response);
+			return;
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
