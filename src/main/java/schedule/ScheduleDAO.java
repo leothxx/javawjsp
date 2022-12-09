@@ -76,4 +76,40 @@ public class ScheduleDAO {
 		}
 		return res;
 	}
+
+	// 스케줄 수정하기
+	public String setScheduleUpdateOk(ScheduleVO vo) {
+		String res = "0";
+		try {
+			sql = "UPDATE schedule SET part=?, content=? WHERE idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPart());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setInt(3, vo.getIdx());
+			pstmt.executeUpdate();
+			res = "1";
+		} catch (SQLException e) {
+			System.out.println("SQL 에러 발생!"+e.getMessage());
+		} finally {
+			getConn.pstmtClose();
+		}
+		return res;
+	}
+
+	// 스케줄 삭제하기
+	public String setScheduleDeleteOk(int idx) {
+		String res = "0";
+		try {
+			sql = "DELETE FROM schedule WHERE idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.executeUpdate();
+			res = "1";
+		} catch (SQLException e) {
+			System.out.println("SQL 에러 발생!"+e.getMessage());
+		} finally {
+			getConn.pstmtClose();
+		}
+		return res;
+	}
 }

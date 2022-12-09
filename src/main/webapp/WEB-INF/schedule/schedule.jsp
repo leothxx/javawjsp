@@ -99,6 +99,30 @@
     </table>
   </div>
 </div>
+<table>
+	<tr>
+		<td class="text-center">
+			<embed src="https://cldup.com/QiFJzyar3R.swf" type="application/x-shockwave-flash" width="1000px" height="550px" class="text-center"></embed>
+		</td>
+	</tr>
+</table>
+<br/>
+<br/>
+<br/>
+<table>
+	<tr>
+		<td style="BORDER-TOP: #dadada 1px solid; BORDER-RIGHT: #dadada 1px solid; BORDER-BOTTOM: #dadada 1px solid; BORDER-LEFT: #dadada 1px solid" width="100%" class="text-center">
+			<center>
+				<embed src="/attachment/cfile2.uf@264AB94754E61D0805CBE8.swflfilename=" quality="high" width="400" height="550" name="gamefile" align="middle" wmode="window" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer"></embed>
+			</center>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<embed src="https://blog.kakaocdn.net/dn/cnPg8t/btrJlVgJGU7/z6z7XrEBMJF8O8BjBPSm5k/tfile.swf" type="application/x-shockwave-flash" width="100%" height="600" align="middle" name="gamefile"></embed>
+		</td>
+	</tr>
+</table>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />
 </body>
